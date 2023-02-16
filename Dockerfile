@@ -16,11 +16,13 @@ RUN git clone https://github.com/spdk/spdk --branch ${TAG} --depth 1 && \
     cd spdk && git submodule update --init --depth 1 && scripts/pkgdep.sh --rdma
 
 # hadolint ignore=DL3003
-RUN cd spdk && ./rpmbuild/rpm.sh --target-arch=${ARCH} --without-uring --without-crypto \
+RUN cd spdk && ./rpmbuild/rpm.sh --target-arch=${ARCH} --without-uring --with-crypto \
     --without-fio --with-raid5f --with-vhost --without-pmdk --without-rbd \
     --with-rdma --with-shared --with-iscsi-initiator --without-vtune
 
 FROM docker.io/library/fedora:37
+
+RUN dnf install -y hostname && dnf clean all
 
 WORKDIR /root
 RUN mkdir -p /root/rpmbuild
