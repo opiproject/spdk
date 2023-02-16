@@ -6,6 +6,8 @@
 [![Pulls](https://img.shields.io/docker/pulls/opiproject/sztpd.svg?logo=docker&style=flat&label=Pulls)](https://hub.docker.com/r/opiproject/sztpd)
 [![Last Release](https://img.shields.io/github/v/release/opiproject/sztpd?label=Latest&style=flat-square&logo=go)](https://github.com/opiproject/sztpd/releases)
 
+SZTPD implements the [Bootstrap Server](https://tools.ietf.org/html/rfc8572#section-4.4) defined in [RFC 8572: Secure Zero Touch Provisioning (SZTP)](https://tools.ietf.org/html/rfc8572).
+
 This project contains Dockerfile for <https://pypi.org/project/sztpd>
 
 ## I Want To Contribute
