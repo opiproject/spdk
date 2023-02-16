@@ -1,0 +1,2 @@
+sqlalchemy<2.0.0
+sztpd==0.0.11
