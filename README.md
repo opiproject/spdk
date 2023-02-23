@@ -2,6 +2,7 @@
 
 [![Linters](https://github.com/opiproject/spdk/actions/workflows/linters.yml/badge.svg)](https://github.com/opiproject/spdk/actions/workflows/linters.yml)
 [![Docker](https://github.com/opiproject/spdk/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/opiproject/spdk/actions/workflows/docker-publish.yml)
+[![Travis](https://app.travis-ci.com/opiproject/spdk.svg?branch=main)](https://app.travis-ci.com/opiproject/spdk)
 [![License](https://img.shields.io/github/license/opiproject/spdk?style=flat-square&color=blue&label=License)](https://github.com/opiproject/spdk/blob/master/LICENSE)
 [![Pulls](https://img.shields.io/docker/pulls/opiproject/spdk.svg?logo=docker&style=flat&label=Pulls)](https://hub.docker.com/r/opiproject/spdk)
 [![Last Release](https://img.shields.io/github/v/release/opiproject/spdk?label=Latest&style=flat-square&logo=go)](https://github.com/opiproject/spdk/releases)
