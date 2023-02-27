@@ -9,7 +9,7 @@ ARG TAG=v23.01
 ARG ARCH=x86-64-v2
 
 WORKDIR /root
-RUN dnf install -y git rpm-build diffutils procps-ng pip python3-grpcio && dnf clean all
+RUN dnf install -y git rpm-build diffutils procps-ng pip python3-grpcio python3-grpcio-tools && dnf clean all
 
 # hadolint ignore=DL3003
 RUN git clone https://github.com/spdk/spdk --branch ${TAG} --depth 1 && \
