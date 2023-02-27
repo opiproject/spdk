@@ -1,4 +1,5 @@
 arch: arm64
+dist: bionic
 language: c
 compiler: gcc
 services:
