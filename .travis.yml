@@ -4,4 +4,4 @@ language: c
 compiler: gcc
 services:
   - docker
-script: docker build -t opiproject/spdk:testarm64 -f Dockerfile .
+script: docker build --tag opiproject/spdk:testarm64 --build-arg ARCH=native -f Dockerfile .
