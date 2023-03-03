@@ -4,9 +4,6 @@
 FROM docker.io/library/fedora:37 as build
 
 ARG TAG=v23.01
-# Pick an arch that has at least sse 4.2 but does not require newer avx
-# See https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
-ARG ARCH=x86-64-v2
 
 RUN dnf install -y git rpm-build diffutils procps-ng pip python3-grpcio python3-grpcio-tools && dnf clean all
 
@@ -16,7 +13,10 @@ WORKDIR /root/spdk
 RUN git submodule update --init --depth 1 && \
     ./scripts/pkgdep.sh --rdma
 
-RUN DEPS="no" LDFLAGS=" " \
+# Pick an arch that has at least sse 4.2 but does not require newer avx
+# See https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
+RUN if [ "$(uname -m)" = "x86_64" ]; then export ARCH="x86-64-v2"; else export ARCH="native"; fi && \
+    DEPS="no" LDFLAGS=" " \
     ./rpmbuild/rpm.sh --target-arch=${ARCH} --without-uring --with-crypto \
     --without-fio --with-raid5f --with-vhost --without-pmdk --without-rbd \
     --with-rdma --without-shared --with-iscsi-initiator --without-vtune --with-vfio-user
