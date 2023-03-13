@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2022 Dell Inc, or its subsidiaries.
 
-FROM docker.io/library/fedora:37 as build
+FROM docker.io/library/fedora:39 as build
 
 ARG TAG=v23.01
 # Pick an arch that has at least sse 4.2 but does not require newer avx
@@ -21,7 +21,7 @@ RUN DEPS="no" LDFLAGS=" " \
     --without-fio --with-raid5f --with-vhost --without-pmdk --without-rbd \
     --with-rdma --without-shared --with-iscsi-initiator --without-vtune --with-vfio-user
 
-FROM docker.io/library/fedora:37
+FROM docker.io/library/fedora:39
 
 RUN dnf install -y hostname && dnf clean all
 
