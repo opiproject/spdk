@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/github/license/opiproject/spdk?style=flat-square&color=blue&label=License)](https://github.com/opiproject/spdk/blob/master/LICENSE)
 [![Pulls](https://img.shields.io/docker/pulls/opiproject/spdk.svg?logo=docker&style=flat&label=Pulls)](https://hub.docker.com/r/opiproject/spdk)
 [![Last Release](https://img.shields.io/github/v/release/opiproject/spdk?label=Latest&style=flat-square&logo=go)](https://github.com/opiproject/spdk/releases)
+[![GitHub stars](https://img.shields.io/github/stars/opiproject/spdk.svg?style=flat-square&label=github%20stars)](https://github.com/opiproject/spdk)
+[![GitHub Contributors](https://img.shields.io/github/contributors/opiproject/spdk.svg?style=flat-square)](https://github.com/opiproject/spdk/graphs/contributors)
 
 The Storage Performance Development Kit (SPDK) provides a set of tools and libraries for writing high performance, scalable, user-mode storage applications. It achieves high performance by moving all of the necessary drivers into userspace and operating in a polled mode instead of relying on interrupts, which avoids kernel context switches and eliminates interrupt handling overhead.
 
