@@ -18,7 +18,7 @@ RUN git submodule update --init --depth 1 && \
 
 RUN DEPS="no" LDFLAGS=" " \
     ./rpmbuild/rpm.sh --target-arch=${ARCH} --without-uring --with-crypto \
-    --without-fio --with-raid5f --with-vhost --without-pmdk --without-rbd \
+    --without-fio --with-raid5f --with-vhost --without-rbd \
     --with-rdma --without-shared --with-iscsi-initiator --without-vtune --with-vfio-user
 
 FROM docker.io/library/fedora:37
