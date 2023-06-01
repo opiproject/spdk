@@ -80,8 +80,11 @@ jobs:
               docker logs "${name}"
               exit 1
           fi
+          # Test without SSL first
+          docker-compose exec -T spdk sh -xc 'spdk_nvme_identify -r "traddr:`hostname -i` trtype:TCP adrfam:IPv4 trsvcid:5555 hostnqn:nqn.2014-08.org.nvmexpress:uuid:feb98abe-d51f-40c8-b348-2753f3571d3c"'
+          docker-compose exec -T spdk sh -xc 'spdk_nvme_perf     -r "traddr:`hostname -i` trtype:TCP adrfam:IPv4 trsvcid:5555 hostnqn:nqn.2014-08.org.nvmexpress:uuid:feb98abe-d51f-40c8-b348-2753f3571d3c subnqn:nqn.2016-06.io.spdk:cnode1" -c 0x1 -q 1 -o 4096 -w randread -t 10' | tee lognotls.txt
+          grep "Total" lognotls.txt
           # TODO: identify doesn't work with SSL yet
-          #docker-compose exec -T spdk sh -xc 'spdk_nvme_identify -r "traddr:`hostname -i` trtype:TCP adrfam:IPv4 trsvcid:4444 hostnqn:nqn.2014-08.org.nvmexpress:uuid:feb98abe-d51f-40c8-b348-2753f3571d3c"'
           docker-compose exec -T spdk sh -xc 'spdk_nvme_perf     -r "traddr:`hostname -i` trtype:TCP adrfam:IPv4 trsvcid:4444 hostnqn:nqn.2014-08.org.nvmexpress:uuid:feb98abe-d51f-40c8-b348-2753f3571d3c subnqn:nqn.2016-06.io.spdk:cnode1" -c 0x1 -q 1 -o 4096 -w randread -t 10 -S ssl --psk-path /tmp/opikey.txt' | tee log.txt
           grep "Total" log.txt
 
