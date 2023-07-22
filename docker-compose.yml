@@ -52,7 +52,7 @@ services:
       timeout: 10s
 
   device:
-    image: docker.io/curlimages/curl:8.1.2
+    image: docker.io/curlimages/curl:8.2.0
     depends_on:
       spdk:
         condition: service_healthy
