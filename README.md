@@ -37,6 +37,8 @@ docker run --rm opiproject/spdk:<version>
 
 ### Compose
 
+:exclamation: `docker-compose` is deprecated. For details, see [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+
 ```sh
 docker-compose up --build --force-recreate
 ```
