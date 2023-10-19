@@ -51,3 +51,13 @@ See documentation [JSON RPC Proxy](https://spdk.io/doc/jsonrpc_proxy.html)
 $ curl -k --user spdkuser:spdkpass -X POST -H "Content-Type: application/json" -d '{"id": 1, "method": "bdev_get_bdevs", "params": {"name": "Malloc0"}}' http://127.0.0.1:9009/
 {"jsonrpc":"2.0","id":1,"result":[{"name":"Malloc0","aliases":["f1c5d95a-b235-40af-9e4d-2c0b3320de80"],"product_name":"Malloc disk","block_size":512,"num_blocks":131072,"uuid":"f1c5d95a-b235-40af-9e4d-2c0b3320de80","assigned_rate_limits":{"rw_ios_per_sec":0,"rw_mbytes_per_sec":0,"r_mbytes_per_sec":0,"w_mbytes_per_sec":0},"claimed":false,"zoned":false,"supported_io_types":{"read":true,"write":true,"unmap":true,"write_zeroes":true,"flush":true,"reset":true,"nvme_admin":false,"nvme_io":false},"driver_specific":{}}]}
 ```
+
+## Test Nvme
+
+```text
+docker run --rm --network=host --privileged -v /dev/hugepages:/dev/hugepages \
+              ghcr.io/opiproject/spdk:main \
+              spdk_nvme_perf \
+              -r 'traddr:127.0.0.1 trtype:TCP adrfam:IPv4 trsvcid:5555 subnqn:nqn.2016-06.io.spdk:cnode1 hostnqn:nqn.2014-08.org.nvmexpress:uuid:feb98abe-d51f-40c8-b348-2753f3571d3c' \
+             -c 0x1 -q 1 -o 4096 -w randread -t 10
+```
