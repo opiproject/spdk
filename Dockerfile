@@ -3,7 +3,7 @@
 
 FROM docker.io/library/fedora:37 as build
 
-ARG TAG=v24.01
+ARG TAG=v24.05
 # Pick an arch that has at least sse 4.2 but does not require newer avx
 # See https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
 ARG ARCH=x86-64-v2
