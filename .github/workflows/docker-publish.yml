@@ -61,6 +61,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            ARCH=${{ runner.arch == "ARM" && "native" || "x86-64-v2" }}
 
   test:
     runs-on: ubuntu-latest
